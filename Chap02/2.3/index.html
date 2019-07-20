@@ -5908,7 +5908,27 @@ T(n) =
 $$</p>
 <p>is $T(n) = n\lg n$.</p>
 </blockquote>
-<p>(Removed)</p>
+<ul>
+<li>
+<p>Base case</p>
+<p>For $n = 2^1$, $T(n) = T(2) = 2\lg 2 = 2$.</p>
+</li>
+<li>
+<p>Suppose $n = 2^k$, $T(n) = n\lg n = 2^k \lg 2^k = 2^kk$.</p>
+<p>For $n = 2^{k + 1}$, </p>
+<p>$$
+\begin{aligned}
+T(n) &amp; = 2T(2^{k + 1} / 2) + 2^{k + 1} \\
+     &amp; = 2T(2^k) + 2^{k + 1} \\
+     &amp; = 2 \cdot 2^kk + 2^{k + 1} \\
+     &amp; = 2^{k + 1}(k + 1) \\
+     &amp; = 2^{k + 1} \lg 2^{k + 1} \\
+     &amp; = n\lg n.
+\end{aligned}
+$$</p>
+</li>
+</ul>
+<p>By P.M.I., $T(n) = n\lg n$, when $n$ is an exact power of $2$.</p>
 <h2 id="23-4">2.3-4</h2>
 <blockquote>
 <p>We can express insertion sort as a recursive procedure as follows. In order to sort $A[1..n]$, we recursively sort $A[1..n - 1]$ and then insert $A[n]$ into the sorted array $A[1..n - 1]$. Write a recurrence for the running time of this recursive version of insertion sort.</p>
