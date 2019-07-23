@@ -5696,9 +5696,21 @@
 <p><strong>a.</strong> Show that insertion sort can sort the $n / k$ sublists, each of length $k$, in $\Theta(nk)$ worst-case time.</p>
 <p><strong>b.</strong> Show how to merge the sublists in $\Theta(n\lg(n / k))$ worst-case time.</p>
 <p><strong>c.</strong> Given that the modified algorithm runs in $\Theta(nk + n\lg(n / k))$ worst-case time, what is the largest value of $k$ as a function of $n$ for which the modified algorithm has the same running time as standard merge sort, in terms of $\Theta$-notation?</p>
-<p><strong>d.</strong> How should we chosse $k$ in practice?</p>
+<p><strong>d.</strong> How should we choose $k$ in practice?</p>
 </blockquote>
-<p>(Removed)</p>
+<p><strong>a.</strong> The worst-case time to sort a list of length $k$ by insertion sort is $\Theta(k^2)$. Therefore, sorting $n / k$ sublists, each of length $k$ takes $\Theta(k^2 \cdot n / k) = \Theta(nk)$ worst-case time.</p>
+<p><strong>b.</strong> We have $n / k$ sorted sublists each of length $k$. To merge these $n / k$ sorted sublists to a single sorted list of length $n$, we have to take $2$ sublists at a time and continue to merge them. This will result in $\lg(n / k)$ steps and we compare $n$ elements in each step. Therefore, the worst-case time to merge the sublists is $\Theta(n\lg(n / k))$.</p>
+<p><strong>c.</strong> The modified algorithm has time complexity as standard merge sort when $\Theta(nk + n\lg(n / k)) = \Theta(n\lg n)$. Assume $k = \Theta(\lg n)$,</p>
+<p>$$
+\begin{aligned}
+\Theta(nk + n\lg(n / k))
+    &amp; = \Theta(nk + n\lg n - n\lg k) \\
+    &amp; = \Theta(n\lg n + n\lg n - n\lg(\lg n)) \\
+    &amp; = \Theta(2n\lg n - n\lg(\lg n)) \\
+    &amp; = \Theta(n\lg n).
+\end{aligned}
+$$</p>
+<p><strong>d.</strong> Choose $k$ be the largest length of sublist on which insertion sort is faster than merge sort.</p>
                 
                   
                 
