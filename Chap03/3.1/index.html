@@ -5851,23 +5851,56 @@
 <blockquote>
 <p>Let $f(n) + g(n)$ be asymptotically nonnegative functions. Using the basic definition of $\Theta$-notation, prove that $\max(f(n), g(n)) = \Theta(f(n) + g(n))$.</p>
 </blockquote>
-<p>(Removed)</p>
+<p>For asymptotically nonnegative functions $f(g)$ and $g(n)$, we know that</p>
+<p>$$
+\begin{aligned}
+\exists n_1, n_2: &amp; f(n) \ge 0 &amp; \text{for} \, n &gt; n_1 \\
+                  &amp; g(n) \ge 0 &amp; \text{for} \, n &gt; n_2.
+\end{aligned}
+$$</p>
+<p>Let $n_0 = \max(n_1, n_2)$ and we know the equations below would be true for $n &gt; n_0$:</p>
+<p>$$
+\begin{aligned}
+f(n)             &amp; \le \max(f(n), g(n)) \\
+g(n)             &amp; \le \max(f(n), g(n)) \\
+(f(n) + g(n))/2  &amp; \le \max(f(n), g(n)) \\
+\max(f(n), g(n)) &amp; \le \max(f(n), g(n)).
+\end{aligned}
+$$</p>
+<p>Then we can combine last two inequalities:</p>
+<p>$$0 \le \frac{f(n) + g(n)}{2} \le \max{(f(n), g(n))} \le f(n) + g(n).$$</p>
+<p>Which is the definition of $\Theta{(f(n) + g(n))}$ with $c_1 = \frac{1}{2}$ and $c_2 = 1$</p>
 <h2 id="31-2">3.1-2</h2>
 <blockquote>
 <p>Show that for any real constants $a$ and $b$, where $b &gt; 0$,</p>
 <p>$$(n + a)^b = \Theta(n^b). \tag{3.2}$$</p>
 </blockquote>
-<p>(Removed)</p>
+<p>Expand $(n + a)^b$ by the Binomial Expansion, we have</p>
+<p>$$(n + a)^b = C_0^b n^b a^0 + C_1^b n^{b - 1} a^1 + \cdots + C_b^b n^0 a^b.$$</p>
+<p>Besides, we know below is true for any polynomial</p>
+<p>$$a_0 x^1 + a_1 x^2 + \cdots + a_n x^n \le (a_0 + a_1 + \cdots + a_n) x^n.$$</p>
+<p>Thus,</p>
+<p>$$C_0^b n^b \le C_0^b n^b a^0 + C_1^b n^{b - 1} a^1 + \cdots + C_n^n n^0 a^n \le (C_0^b + C_1^b + \cdots + C_b^b) n^b.$$</p>
+<p>$$\implies (n + a)^b = \Theta(n^b).$$</p>
 <h2 id="31-3">3.1-3</h2>
 <blockquote>
 <p>Explain why the statement, "The running time of algorithm $A$ is at least $O(n^2)$," is meaningless.</p>
 </blockquote>
-<p>(Removed)</p>
+<p>Let $T(n)$ be the running time for algorithm <strong>A</strong> and function $f(n) = O(n^2)$. The
+statement "The running time for algorithm <strong>A</strong> is at least $O(n^2)$" means that $T(n)$ is an upper bound of $f(n)$.</p>
+<p>Since $f(n)$ could be any function smaller than $n^2$ (including constant function), we can rephase the statement as "The running time of algorithm <strong>A</strong> is at least constant." Back to the problem, the statement is meaningless because the running time for every algorithm is at least constant.</p>
 <h2 id="31-4">3.1-4</h2>
 <blockquote>
 <p>Is $2^{n + 1} = O(2^n)$? Is $2^{2n} = O(2^n)$?</p>
 </blockquote>
-<p>(Removed)</p>
+<ul>
+<li>
+<p>True. Note that $2^{n + 1} = 2 \times 2^n$. We can choose $c \ge 2$ and $n_0 = 0$, such that $0 \le 2^{n + 1} \le c \times 2^n$ for all $n \ge n_0$. By definition, $2^{n + 1} = O(2^n)$.</p>
+</li>
+<li>
+<p>False. Note that $2^{2n} = 2^n \times 2^n = 4^n$. We can't find any $c$ and $n_0$, such that $0 \le 2^{2n} = 4^n \le c \times 2^n$ for all $n \ge n_0$.</p>
+</li>
+</ul>
 <h2 id="31-5">3.1-5</h2>
 <blockquote>
 <p>Prove Theorem 3.1.</p>
@@ -5930,7 +5963,20 @@ O(g(n, m)) = \{f(n, m):
 $$</p>
 <p>Give corresponding definitions for $\Omega(g(n, m))$ and $\Theta(g(n, m))$.</p>
 </blockquote>
-<p>(Removed)</p>
+<p>$$
+\begin{aligned}
+\Omega(g(n, m)) = \{ f(n, m):
+  &amp; \text{ there exist positive constants $c$, $n_0$, and $m_0$ such that } \\
+  &amp; \text{ $0 \le cg(n, m) \le f(n, m)$ for all $n \ge n_0$ and $m \ge m_0$}.\}
+\end{aligned}
+$$</p>
+<p>$$
+\begin{aligned}
+\Theta(g(n, m)) = \{ f(n, m):
+  &amp; \text{ there exist positive constants $c_1$, $c_2$, $n_0$, and $m_0$ such that } \\
+  &amp; \text{ $c_1 g(n, m) \le f(n, m) \le c_2 g(n, m)$ for all $n \ge n_0$ and $m \ge m_0$}.\}
+\end{aligned}
+$$</p>
                 
                   
                 

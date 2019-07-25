@@ -5702,9 +5702,44 @@
 \lg^*(\lg n) \quad &amp; \quad 2^{\sqrt{2\lg n}} \quad &amp; \quad n \quad &amp; \quad 2^n \quad &amp; \quad n\lg n \quad &amp; \quad 2^{2^{n + 1}}
 \end{array}
 $$</p>
-<p><strong>b.</strong> Give an example of a single nonnegative function $f(n)$ such that for all functions $g_i(n)$ in part (1), $f(n)$ is neither $O(g_i(n))$ nor $\Omega(g_i(n))$.</p>
+<p><strong>b.</strong> Give an example of a single nonnegative function $f(n)$ such that for all functions $g_i(n)$ in part (a), $f(n)$ is neither $O(g_i(n))$ nor $\Omega(g_i(n))$.</p>
 </blockquote>
-<p>(Removed)</p>
+<p>$$
+\begin{array}{ll}
+2^{2^{n + 1}}                      &amp; \\
+2^{2^n}                            &amp; \\
+(n + 1)!                           &amp; \\
+n!                                 &amp; \\
+e^n                                &amp; \\
+n\cdot 2^n                         &amp; \\
+2^n                                &amp; \\
+(3 / 2)^n                          &amp; \\
+(\lg n)^{\lg n} = n^{\lg\lg n}     &amp; \\
+(\lg n)!                           &amp; \\
+n^3                                &amp; \\
+n^2 = 4^{\lg n}                    &amp; \\
+n\lg n \text{ and } \lg(n!)        &amp; \\
+n = 2^{\lg n}                      &amp; \\
+(\sqrt 2)^{\lg n}(= \sqrt n)       &amp; \\
+2^{\sqrt{2\lg n}}                  &amp; \\
+\lg^2 n                            &amp; \\
+\ln n                              &amp; \\
+\sqrt{\lg n}                       &amp; \\
+\ln\ln n                           &amp; \\
+2^{\lg^*n}                        &amp; \\
+\lg^*n \text{ and } \lg^*(\lg n) &amp; \\
+\lg(\lg^*)n                       &amp; \\
+n^{1 / \lg n}(= 2) \text{ and } 1  &amp;
+\end{array}
+$$</p>
+<p><strong>b.</strong> For example,</p>
+<p>$$
+f(n) =
+\begin{cases} 2^{2^{n + 2}} &amp; \text{if $n$ is even}, \\
+                          0 &amp; \text{if $n$ is odd}.
+\end{cases}
+$$</p>
+<p>for all functions $g_i(n)$ in part (a), $f(n)$ is neither $O(g_i(n))$ nor $\Omega(g_i(n))$.</p>
                 
                   
                 
