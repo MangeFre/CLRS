@@ -648,6 +648,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#32-8" title="3.2-8" class="md-nav__link">
+    3.2-8
+  </a>
+  
+</li>
+      
       
       
       
@@ -5812,6 +5819,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#32-8" title="3.2-8" class="md-nav__link">
+    3.2-8
+  </a>
+  
+</li>
+      
       
       
       
@@ -5883,26 +5897,119 @@ $$</p>
 <blockquote>
 <p>Is the function $\lceil \lg n \rceil!$ polynomially bounded? Is the function $\lceil \lg\lg n \rceil!$ polynomially bounded?</p>
 </blockquote>
-<p>(Removed)</p>
-<p>The last step above follows from the property that any polylogarithmic function grows more slowly than any positive polynomial function, i.e., that for constants $a, b &gt; 0$, we have $\lg^b = o(n^a)$. Substitute $\lg n$ for $n$, $2$ for $b$, and $1$ for $a$, giving $\lg^2(\lg n) = o(\lg n)$.</p>
-<p>Therefore, $\lg(\lceil \lg\lg n \rceil!) = O(\lg n)$, and so $\lceil \lg\lg n \rceil!$ is polynomially bounded.</p>
+<p>Proving that a function $f(n)$ is polynomially bounded is equivalent to proving that $\lg(f(n)) = O(\lg n)$ for the following reasons.</p>
+<ul>
+<li>If $f$ is polynomially bounded, then there exist constants $c$, $k$, $n_0$ such that for all $n \ge n_0$, $f(n) \le cn^k$. Hence, $\lg(f(n)) \le kc\lg n$, which means that $\lg(f(n)) = O(\lg n)$.</li>
+<li>If $\lg(f(n)) = O(\lg n)$, then $f$ is polynomially bounded.</li>
+</ul>
+<p>In the following proofs, we will make use of the following two facts:</p>
+<ol>
+<li>$\lg(n!) = \Theta(n\lg n)$</li>
+<li>$\lceil \lg n \rceil = \Theta(\lg n)$</li>
+</ol>
+<p>$\lceil \lg n \rceil!$ is not polynomially bounded because</p>
+<p>$$
+\begin{aligned}
+\lg(\lceil \lg n \rceil!)
+    &amp; =   \Theta(\lceil \lg n \rceil \lg \lceil \lg n \rceil) \\
+    &amp; =   \Theta(\lg n\lg\lg n) \\
+    &amp; =   \omega(\lg n) \\
+    &amp; \ne O(\lg n).
+\end{aligned}
+$$</p>
+<p>$\lceil \lg\lg n \rceil!$ is polynomially bounded because</p>
+<p>$$
+\begin{aligned}
+\lg(\lceil \lg\lg n \rceil!)
+    &amp; = \Theta(\lceil \lg\lg n \rceil \lg \lceil \lg\lg n \rceil) \\
+    &amp; = \Theta(\lg\lg n\lg\lg\lg n) \\
+    &amp; = o((\lg\lg n)^2) \\
+    &amp; = o(\lg^2(\lg n)) \\
+    &amp; = o(\lg n) \\
+    &amp; = O(\lg n).
+\end{aligned}
+$$</p>
 <h2 id="32-5-star">3.2-5 $\star$</h2>
 <blockquote>
 <p>Which is asymptotically larger: $\lg(\lg^*n)$ or $\lg^*(\lg n)$?</p>
 </blockquote>
-<p>(Removed)</p>
+<p>We have $\lg^* 2^n = 1 + \lg^* n$,</p>
+<p>$$
+\begin{aligned}
+\lim_{n \to \infty} \frac{\lg(\lg^*n)}{\lg(\lg n)}
+    &amp; = \lim_{n \to \infty} \frac{\lg(\lg^* 2^n)}{\lg^*(\lg 2^n)} \\
+    &amp; = \lim_{n \to \infty} \frac{\lg(1 + \lg^* n)}{\lg^* n} \\
+    &amp; = \lim_{n \to \infty} \frac{\lg(1 + n)}{n} \\
+    &amp; = \lim_{n \to \infty} \frac{1}{1 + n} \\
+    &amp; = 0.
+\end{aligned}
+$$</p>
+<p>Therefore, we have that $\lg^*(\lg n)$ is asymptotically larger.</p>
 <h2 id="32-6">3.2-6</h2>
 <blockquote>
 <p>Show that the golden ratio $\phi$ and its conjugate $\hat \phi$ both satisfy the equation $x^2 = x + 1$.</p>
 </blockquote>
-<p>(Removed)</p>
+<p>$$
+\begin{aligned}
+\phi^2 &amp; = \Bigg(\frac{1 + \sqrt 5}{2}\Bigg)^2 = \frac{6 + 2\sqrt 5}{4} = 1 + \frac{1 + \sqrt 5}{2} = 1 + \phi \\
+\hat\phi^2 &amp; = \Bigg(\frac{1 - \sqrt 5}{2}\Bigg)^2 = \frac{6 - 2\sqrt 5}{4} = 1 + \frac{1 - \sqrt 5}{2} = 1 + \hat\phi.
+\end{aligned}
+$$</p>
 <h2 id="32-7">3.2-7</h2>
 <blockquote>
 <p>Prove by induction that the $i$th Fibonacci number satisfies the equality</p>
 <p>$$F_i = \frac{\phi^i - \hat\phi^i}{\sqrt 5},$$</p>
 <p>where $\phi$ is the golden ratio and $\hat\phi$ is its conjugate.</p>
 </blockquote>
-<p>(Removed)</p>
+<ul>
+<li>
+<p>Base case</p>
+<p>For $i = 0$,</p>
+<p>$$
+\begin{aligned}
+\frac{\phi^0 - \hat\phi^0}{\sqrt 5}
+    &amp; = \frac{1 - 1}{\sqrt 5} \\
+    &amp; = 0 \\
+    &amp; = F_0.
+\end{aligned}
+$$</p>
+<p>For $i = 1$,</p>
+<p>$$
+\begin{aligned}
+\frac{\phi^1 - \hat\phi^1}{\sqrt 5}
+    &amp; = \frac{(1 + \sqrt 5) - (1 - \sqrt 5)}{2 \sqrt 5} \\
+    &amp; = 1 \\
+    &amp; = F_1.
+\end{aligned}
+$$</p>
+</li>
+<li>
+<p>Assume</p>
+<ul>
+<li>$F_{i - 1} = (\phi^{i - 1} - \hat\phi^{i - 1}) / \sqrt 5$ and</li>
+<li>$F_{i - 2} = (\phi^{i - 2} - \hat\phi^{i - 2}) / \sqrt 5$,</li>
+</ul>
+<p>$$
+\begin{aligned}
+F_i &amp; = F_{i - 1} + F_{i - 2} \\
+    &amp; = \frac{\phi^{i - 1} - \hat\phi^{i - 1}}{\sqrt 5} + \frac{\phi^{i - 2} - \hat\phi^{i - 2}}{\sqrt 5} \\
+    &amp; = \frac{\phi^{i - 2}(\phi + 1) - \hat\phi^{i - 2}(\hat\phi + 1)}{\sqrt 5}  \\
+    &amp; = \frac{\phi^{i - 2}\phi^2 - \hat\phi^{i - 2}\hat\phi^2}{\sqrt 5} \\
+    &amp; = \frac{\phi^i - \hat\phi^i}{\sqrt 5}.
+\end{aligned}
+$$</p>
+</li>
+</ul>
+<h2 id="32-8">3.2-8</h2>
+<blockquote>
+<p>Show that $k\ln k = \Theta(n)$ implies $k = \Theta(n / \lg n)$.</p>
+</blockquote>
+<p>From the symmetry of $\Theta$,</p>
+<p>$$k\ln k = \Theta(n) \Rightarrow n = \Theta(k\ln k).$$</p>
+<p>Let's find $\ln n$,</p>
+<p>$$\ln n = \Theta(\ln(k\ln k)) = \Theta(\ln k + \ln\ln k) = \Theta(\ln k).$$</p>
+<p>Let's divide the two,</p>
+<p>$$\frac{n}{\ln n} = \frac{\Theta(k\ln k)}{\Theta(\ln k)} = \Theta\Big({\frac{k\ln k}{\ln k}}\Big) = \Theta(k).$$</p>
                 
                   
                 

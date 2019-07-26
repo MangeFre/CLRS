@@ -5706,7 +5706,13 @@
 <p><strong>a.</strong> Do the procedures $\text{BUILD-MAX-HEAP}$ and $\text{BUILD-MAX-HEAP}'$ always create the same heap when run on the same input array? Prove that they do, or provide a counterexample.</p>
 <p><strong>b.</strong> Show that in the worst case, $\text{BUILD-MAX-HEAP}'$ requires $\Theta(n\lg n)$ time to build a $n$-element heap.</p>
 </blockquote>
-<p>(Removed)</p>
+<p><strong>a.</strong> Consider the following counterexample.</p>
+<ul>
+<li>Input array $A = \langle 1, 2, 3 \rangle$:</li>
+<li>$\text{BUILD-MAX-HEAP}(A)$: $A = \langle 3, 2, 1 \rangle$.</li>
+<li>$\text{BUILD-MAX-HEAP}'(A)$: $A = \langle 3, 1, 2 \rangle$.</li>
+</ul>
+<p><strong>b.</strong> Each insert step takes at most $O(\lg n)$, since we are doing it $n$ times, we get a bound on the runtime of $O(n\lg n)$.</p>
                 
                   
                 

@@ -5892,7 +5892,78 @@ $$</p>
 <blockquote>
 <p>Write pseudocode for Strassen's algorithm.</p>
 </blockquote>
-<p>(Removed)</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">STRASSEN</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">rows</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">let</span> <span class="n">C</span> <span class="n">be</span> <span class="n">a</span> <span class="k">new</span> <span class="n">n</span> <span class="err">×</span> <span class="n">n</span> <span class="n">matrix</span>
+    <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">][</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">][</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">][</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">][</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">][</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">][</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">][</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">][</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">S</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">STRASSEN</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">STRASSEN</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">STRASSEN</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">P</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">STRASSEN</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">S</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">P</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">STRASSEN</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">S</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+    <span class="n">P</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">STRASSEN</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">S</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+    <span class="n">P</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">STRASSEN</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">S</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+    <span class="n">C</span><span class="p">[</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">][</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="n">P</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">P</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">C</span><span class="p">[</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">][</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">C</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">][</span><span class="mf">1.</span><span class="p">.</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">P</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">C</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">][</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">.</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">P</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">C</span>
+</pre></div>
+</td></tr></table>
+
 <h2 id="42-3">4.2-3</h2>
 <blockquote>
 <p>How would you modify Strassen's algorithm to multiply $n \times n$ matrices in which $n$ is not an exact power of $2$? Show that the resulting algorithm runs in time $\Theta(n^{\lg7})$.</p>
@@ -5902,7 +5973,8 @@ $$</p>
 <blockquote>
 <p>What is the largest $k$ such that if you can multiply $3 \times 3$ matrices using $k$ multiplications (not assuming commutativity of multiplication), then you can multiply $n \times n$ matrices is time $o(n^{\lg 7})$? What would the running time of this algorithm be?</p>
 </blockquote>
-<p>(Removed)</p>
+<p>Assume $n = 3^m$ for some $m$. Then, using block matrix multiplication, we obtain the recursive running time $T(n) = kT(n / 3) + O(1)$.</p>
+<p>By master theorem, we can find the largest $k$ to satisfy $\log_3 k &lt; \lg 7$ is $k = 21$.</p>
 <h2 id="42-5">4.2-5</h2>
 <blockquote>
 <p>V. Pan has discovered a way of multiplying $68 \times 68$ matrices using $132464$ multiplications, a way of multiplying $70 \times 70$ matrices using $143640$ multiplications, and a way of multiplying $72 \times 72$ matrices using $155424$ multiplications. Which method yields the best asymptotic running time when used in a divide-and-conquer matrix-multiplication algorithm? How does it compare to Strassen's algorithm?</p>
